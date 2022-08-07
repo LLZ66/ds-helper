@@ -14,7 +14,7 @@
     "onLanguage:javascript",
     "onLanguage:typescript"
   ],
-  "main": "./extension.js",
+  "main": "./src/index.js",
   "contributes": {
     "commands": [{
       "command": "ds-helper.helloWorld",

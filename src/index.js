@@ -2,7 +2,7 @@
  * @Author: 刘涟洲 1228429427@qq.com
  * @Date: 2022-09-08 10:49:35
  * @LastEditors: 刘涟洲 1228429427@qq.com
- * @LastEditTime: 2022-09-23 16:09:14
+ * @LastEditTime: 2022-09-23 16:48:55
  * @FilePath: \ds-helper\src\index.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -26,7 +26,8 @@ function activate(context) {
     const { start, end } = vscode.window.activeTextEditor.selection;
     const text = vscode.window.activeTextEditor.document.getText(new vscode.Range(start, end))
     const dsPart = regexp.getDsPart(text);
-    console.log(ast.generateDSAst(dsPart));
+    const AST = ast.generateDSAst(dsPart);
+    ast.parseAST(AST);
     // Regexp.getDsPart(text);
 	});
 

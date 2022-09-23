@@ -23,7 +23,7 @@ let codePart = {
     fields: [
       {
         name: 'orderSeq',
-        type: FieldType.number,
+        type: "number" as FieldType,
         label: intl.get('yhfm.portal.model.orderSeq').d('排序号'),
         defaultValue: 0,
         required: true,

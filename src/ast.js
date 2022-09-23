@@ -2,7 +2,7 @@
  * @Author: 刘涟洲 1228429427@qq.com
  * @Date: 2022-09-08 10:49:35
  * @LastEditors: 刘涟洲 1228429427@qq.com
- * @LastEditTime: 2022-09-23 16:41:41
+ * @LastEditTime: 2022-09-23 17:00:35
  * @FilePath: \ds-helper\src\utils\ast.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -36,6 +36,15 @@ function generateDSAst(codePart) {
   }
 };
 
+function parseAST(ast) {
+  walk.full(ast, function(node){
+    if(node.key && node.key.name && node.key.name === 'fields') {
+      console.log(node);
+    }
+  });
+}
+
 module.exports = {
   generateDSAst,
+  parseAST,
 }

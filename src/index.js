@@ -10,7 +10,8 @@
 // Import the module and reference it with the alias vscode in your code below
 const vscode = require('vscode');
 const regexp = require('./regexp');
-const ast = require("./ast")
+const ast = require("./ast");
+const generate = require('./generate')
 
 
 // this method is called when your extension is activated
@@ -20,14 +21,15 @@ const ast = require("./ast")
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
-
+  console.log("active");
 
 	let disposable = vscode.commands.registerCommand('ds-helper.helloWorld', function () {
     const { start, end } = vscode.window.activeTextEditor.selection;
     const text = vscode.window.activeTextEditor.document.getText(new vscode.Range(start, end))
     const dsPart = regexp.getDsPart(text);
     const AST = ast.generateDSAst(dsPart);
-    ast.parseAST(AST);
+    const fields = ast.parseAST(AST);
+    generate.generateElements(fields);
     // Regexp.getDsPart(text);
 	});
 

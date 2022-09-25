@@ -10,9 +10,7 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:ds-helper.helloWorld",
-    "onLanguage:javascript",
-    "onLanguage:typescript"
+    "onCommand:ds-helper.helloWorld"
   ],
   "main": "./src/index.js",
   "contributes": {

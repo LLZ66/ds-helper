@@ -26,7 +26,7 @@ function generateDSAst(codePart) {
     const tsFilePath = path.join(__dirname, 'tscode.ts');
     fs.writeFileSync(tsFilePath, code);
     try {
-      child_process.exec(`tsc ${tsFilePath}`);
+      child_process.execSync(`tsc ${tsFilePath}`);
     }catch(err) {};
     const fileContent = fs.readFileSync(path.join(__dirname, 'tscode.js'));
     const dsAst = acorn.parse(fileContent, {
@@ -37,11 +37,31 @@ function generateDSAst(codePart) {
 };
 
 function parseAST(ast) {
+  let fields;
   walk.full(ast, function(node){
     if(node.key && node.key.name && node.key.name === 'fields') {
-      console.log(node);
+      fields = node.value.elements.map(field => {
+        let fieldProperties = field.properties;
+        fieldProperties = fieldProperties.map(properties => {
+          return {
+            [properties.key.name]: properties.value.value,
+          }
+        });
+        return fieldProperties
+      });
     }
   });
+  return fields.map((field) => {
+    return array2Object(field)
+  });
+};
+
+function array2Object(array) {
+  let object = {};
+  array.forEach(element => {
+    object = Object.assign(object, element);
+  });
+  return object;
 }
 
 module.exports = {

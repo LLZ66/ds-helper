@@ -1,26 +1,38 @@
 const columns = [
   {
-    name: itemXid,
+    name: orderSeq,
     align: ColumnAlign.center,
   },
   {
-    name: itemName,
+    name: systemCode,
     align: ColumnAlign.center,
   },
   {
-    name: itemCount,
+    name: systemShortName,
     align: ColumnAlign.center,
   },
   {
-    name: weight,
+    name: systemFullName,
     align: ColumnAlign.center,
   },
   {
-    name: unitOfMeasurement,
+    name: systemImage,
     align: ColumnAlign.center,
   },
   {
-    name: attribute2,
+    name: systemClassify,
+    align: ColumnAlign.center,
+  },
+  {
+    name: systemType,
+    align: ColumnAlign.center,
+  },
+  {
+    name: systemUrl,
+    align: ColumnAlign.center,
+  },
+  {
+    name: enableFlag,
     align: ColumnAlign.center,
   }
 ]

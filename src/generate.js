@@ -2,7 +2,7 @@
  * @Author: 刘涟洲 1228429427@qq.com
  * @Date: 2022-09-26 09:05:54
  * @LastEditors: 刘涟洲 1228429427@qq.com
- * @LastEditTime: 2022-09-26 11:26:50
+ * @LastEditTime: 2022-09-26 14:39:59
  * @FilePath: \ds-helper\src\generate.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -18,7 +18,7 @@ function generateElements(fields) {
   }).then((type) => {
     const tempalteContent = fields.map(field => {
       return generateByType(field, type)
-    });
+    }).filter(field => field);
     // This strange appearance is for setting the output format 0.0
     const template = type === 'Table'?`const columns = [${tempalteContent}
 ]`:`<Form>
@@ -46,6 +46,8 @@ function generateFormElement(field) {
     return `<Select name="${field.name}" />`
   }else if(field.lovCode) {
     return `<Lov name="${field.name}" />`
+  }else if(field.bind && !Object.keys(field).some(key => key === "label")) {
+    return undefined
   }else {
     switch(field.type) {
       case "number":
@@ -85,12 +87,12 @@ function generateTableElement(field) {
   return fileType === 'js'?
   `
   {
-    name: ${field.name},
+    name: "${field.name}",
     align: 'center'
   }`:
   `
   {
-    name: ${field.name},
+    name: "${field.name}",
     align: ColumnAlign.center,
   }`
 }

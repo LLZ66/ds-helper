@@ -23,8 +23,8 @@
     "keybindings": [
       {
         "command": "ds-helper.helloWorld",
-        "key": "ctrl+alt+s",
-        "mac": "cmd+alt+s"
+        "key": "ctrl+win+s",
+        "mac": "cmd+win+s"
       }
     ]
   },

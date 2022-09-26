@@ -1,38 +1,18 @@
 const columns = [
   {
-    name: orderSeq,
+    name: userIdLov,
     align: ColumnAlign.center,
   },
   {
-    name: systemCode,
+    name: userId,
     align: ColumnAlign.center,
   },
   {
-    name: systemShortName,
+    name: loginName,
     align: ColumnAlign.center,
   },
   {
-    name: systemFullName,
-    align: ColumnAlign.center,
-  },
-  {
-    name: systemImage,
-    align: ColumnAlign.center,
-  },
-  {
-    name: systemClassify,
-    align: ColumnAlign.center,
-  },
-  {
-    name: systemType,
-    align: ColumnAlign.center,
-  },
-  {
-    name: systemUrl,
-    align: ColumnAlign.center,
-  },
-  {
-    name: enableFlag,
+    name: realName,
     align: ColumnAlign.center,
   }
 ]

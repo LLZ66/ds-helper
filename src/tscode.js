@@ -76,6 +76,12 @@ var codePart = {
             defaultValue: true,
             label: intl.get('yhfm.portal.model.enableFlag').d('是否启用')
         },
+        {
+            name: 'isActive',
+            lookupCode: htmsIsYN,
+            label: '状态',
+            type: 'string'
+        },
     ],
     transport: {
         read: function (_a) {

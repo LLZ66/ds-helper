@@ -2,17 +2,18 @@
  * @Author: 刘涟洲 1228429427@qq.com
  * @Date: 2022-09-26 09:05:54
  * @LastEditors: 刘涟洲 1228429427@qq.com
- * @LastEditTime: 2022-09-26 14:39:59
+ * @LastEditTime: 2022-12-18 10:25:35
  * @FilePath: \ds-helper\src\generate.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 const vscode = require('vscode');
 const fs = require('fs');
 const path = require('path')
+let fileType;
 
-const fileType = vscode.window.activeTextEditor.document.fileName.endsWith('js')? 'js':'ts';
 
 function generateElements(fields) {
+  fileType = vscode.window.activeTextEditor.document.fileName.endsWith('js')? 'js':'ts';
   vscode.window.showQuickPick(['Form', 'Table'], {
     title: '选择要输出的代码格式'
   }).then((type) => {
@@ -20,7 +21,7 @@ function generateElements(fields) {
       return generateByType(field, type)
     }).filter(field => field);
     // This strange appearance is for setting the output format 0.0
-    const template = type === 'Table'?`const columns = [${tempalteContent}
+    const template = type === 'Table'?`const columns: ColumnProps[] = [${tempalteContent}
 ]`:`<Form>
   ${tempalteContent.join("\n\t")}
 </Form>
@@ -84,17 +85,21 @@ function generateFormElement(field) {
 };
 
 function generateTableElement(field) {
-  return fileType === 'js'?
-  `
-  {
-    name: "${field.name}",
-    align: 'center'
-  }`:
-  `
-  {
-    name: "${field.name}",
-    align: ColumnAlign.center,
-  }`
+  if(field.bind && !Object.keys(field).some(key => key === "label")) {
+    return
+  } {
+    return fileType === 'js'?
+    `
+    {
+      name: "${field.name}",
+      align: 'center'
+    }`:
+    `
+    {
+      name: "${field.name}",
+      align: ColumnAlign.center,
+    }`
+  }
 }
 
 

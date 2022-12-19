@@ -2,8 +2,9 @@
   "name": "ds-helper",
   "displayName": "ds-helper",
   "description": "a tool to help build page with dataSet batter",
-  "publisher": "llz",
-  "version": "0.0.1",
+  "publisher": "llzQAQ",
+  "version": "0.0.5",
+  "icon": "icon.png",
   "engines": {
     "vscode": "^1.69.0"
   },

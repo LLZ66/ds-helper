@@ -5,6 +5,10 @@
   "publisher": "llzQAQ",
   "version": "0.0.5",
   "icon": "icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LLZ66/ds-helper/tree/master"
+  },
   "engines": {
     "vscode": "^1.69.0"
   },
